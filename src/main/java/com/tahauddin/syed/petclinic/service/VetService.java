@@ -4,11 +4,7 @@ import com.tahauddin.syed.petclinic.model.Vet;
 
 import java.util.List;
 
-public interface VetService {
+public interface VetService extends CrudService<Vet, Long>{
     
-    Vet findById(Long id);
-    
-    Vet save(Vet vet);
 
-    List<Vet> findAll();
 }
