@@ -2,9 +2,11 @@ package com.tahauddin.syed.petclinic.bootstrap;
 
 import com.tahauddin.syed.petclinic.model.Owner;
 import com.tahauddin.syed.petclinic.model.PetType;
+import com.tahauddin.syed.petclinic.model.Speciality;
 import com.tahauddin.syed.petclinic.model.Vet;
 import com.tahauddin.syed.petclinic.service.OwnerService;
 import com.tahauddin.syed.petclinic.service.PetTypeService;
+import com.tahauddin.syed.petclinic.service.SpecialityService;
 import com.tahauddin.syed.petclinic.service.VetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -15,11 +17,13 @@ public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
     private final PetTypeService petTypeService;
+    private final SpecialityService specialityService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
+        this.specialityService = specialityService;
     }
 
     @Override
@@ -32,6 +36,18 @@ public class DataLoader implements CommandLineRunner {
         PetType cat = new PetType();
         cat.setName("cat");
         PetType savedCatPetType = petTypeService.save(cat);
+
+        Speciality radiology = new Speciality();
+        radiology.setDescription("Radiology");
+        Speciality savedRadiology = specialityService.save(radiology);
+
+        Speciality surgery = new Speciality();
+        surgery.setDescription("Surgery");
+        Speciality savedSurgery = specialityService.save(surgery);
+
+        Speciality dentistry = new Speciality();
+        dentistry.setDescription("dentistry");
+        Speciality savedDentistry = specialityService.save(dentistry);
 
 
         Owner ownerOne = new Owner();
@@ -48,7 +64,7 @@ public class DataLoader implements CommandLineRunner {
         ownerTwo.setLastName("Weston");
         ownerTwo.setAddress("St.Petersburg");
         ownerTwo.setCity("St.Petersburg");
-        ownerTwo.setTelephone("123456789");
+        ownerTwo.setTelephone("321654987");
 
         ownerService.save(ownerOne);
         ownerService.save(ownerTwo);
